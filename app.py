@@ -19,7 +19,7 @@ HTML = """
     <h1>Positive Chatbot</h1>
 
     <form method="POST">
-        <input type="text" name="message" style="width:300px;" autofocus>
+        <input name="message" placeholder="Type here..." required>
         <button type="submit">Send</button>
     </form>
 
@@ -49,4 +49,5 @@ def home():
     return render_template_string(HTML, user=user, bot=bot)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    import os
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
